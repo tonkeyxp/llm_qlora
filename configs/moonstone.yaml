@@ -5,6 +5,8 @@ model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
 data:
   type: vicuna
   dataset: ../drive/MyDrive/dataset
+  user_header: "### Instruction:\n"
+  response_header: "### Response:\n"
 lora:
   r: 16
   lora_alpha: 64
