@@ -20,7 +20,7 @@ lora:
   task_type: CAUSAL_LM
 trainer:
   batch_size: 2
-  gradient_accumulation_steps: 4
+  gradient_accumulation_steps: 2
   warmup_steps: 100
   num_train_epochs: 1
   learning_rate: 0.0002 
