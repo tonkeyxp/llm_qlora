@@ -102,7 +102,7 @@ class QloraTrainer:
         if "model_family" in self.config and self.config["model_family"] == "llama":
             base_model = LlamaForCausalLM.from_pretrained(model_id, device_map="cpu")
         else:
-            base_model = AutoModelForCausalLM.from_pretrained(model_id, device_map="cpu")
+            base_model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True, device_map="cpu")
 
         adapter_save_path = f"{self.config['model_output_dir']}/{self.config['model_name']}_adapter"
         model = PeftModel.from_pretrained(base_model, adapter_save_path)
