@@ -21,7 +21,7 @@ def read_yaml_file(file_path):
             print(f"Error reading YAML file: {e}")
 
 def get_prompt(human_prompt):
-    prompt_template=f"### HUMAN:\n{human_prompt}\n\n### RESPONSE:\n"
+    prompt_template=f"### Instruction:\n{human_prompt}\n\n### Response:\n"
     return prompt_template
 
 def get_llm_response(prompt):
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         model = LlamaForCausalLM.from_pretrained(model_path, device_map="auto", load_in_8bit=True)
     else:
         tokenizer = AutoTokenizer.from_pretrained(model_path)
-        model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto", load_in_8bit=True)
+        model = AutoModelForCausalLM.from_pretrained(model_path, device_map={"":0}, trust_remote_code=True, load_in_8bit=True)
 
     pipe = pipeline(
         "text-generation",
