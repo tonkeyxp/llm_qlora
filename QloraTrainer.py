@@ -41,8 +41,6 @@ class QloraTrainer:
             #tokenizer.pad_token = tokenizer.eos_token  # https://github.com/huggingface/transformers/issues/22794
             tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
-        model = prepare_model_for_kbit_training(model)
-
         self.tokenizer = tokenizer
         self.base_model = model
 
