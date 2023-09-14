@@ -5,7 +5,7 @@ import yaml
 from langchain import PromptTemplate
 from transformers import (AutoConfig, AutoModel, AutoModelForSeq2SeqLM,
                           AutoTokenizer, GenerationConfig, LlamaForCausalLM,
-                          LlamaTokenizer, pipeline)
+                          LlamaTokenizer, AutoModelForCausalLM, pipeline)
 
 """
 Ad-hoc sanity check to see if model outputs something coherent
