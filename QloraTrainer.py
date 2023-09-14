@@ -41,7 +41,6 @@ class QloraTrainer:
             #tokenizer.pad_token = tokenizer.eos_token  # https://github.com/huggingface/transformers/issues/22794
             tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
-        model.gradient_checkpointing_enable()
         model = prepare_model_for_kbit_training(model)
 
         self.tokenizer = tokenizer
@@ -79,7 +78,6 @@ class QloraTrainer:
             train_dataset=data["train"],
             args=transformers.TrainingArguments(
                 per_device_train_batch_size=config_dict["batch_size"],
-                gradient_accumulation_steps=config_dict["gradient_accumulation_steps"],
                 warmup_steps=config_dict["warmup_steps"],
                 num_train_epochs=config_dict["num_train_epochs"],
                 learning_rate=config_dict["learning_rate"],
